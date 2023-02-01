@@ -25,21 +25,38 @@ for record in data:
     session.add(model(id=record.get('pk'), **record.get('fields')))
 session.commit()
 
-publ_name = input('Ведите имя писателя или id для вывода: ')
 
 
-if publ_name.isnumeric():
-    for c in session.query(Book).filter(Book.id_publisher == int(publ_name)).all():
-        pass
-    for v in session.query(Stock).join(Book.stock).filter(Stock.id_book == str(c)).all():
-        pass
+def searching_publisher_name():
+    query_join1 = session.query(Sale).join(Stock).join(Book).join(Publisher)
+    query_join = session.query(Shop).join(Stock).join(Book).join(Publisher)
+    query_publisher_name = input('Введите имя (name) издателя: ')
+    query_result = query_join.filter(Publisher.name == query_publisher_name)
+    query_result1 = query_join1.filter(Publisher.name == query_publisher_name)
+    for result in query_result.all():
+        print(f'Издатель "{query_publisher_name}" найден в магазине "{result.name}" с идентификатором {result.id}')
+        for result in query_result1.all():
+            print(f'Книга была куплена "{result.date_sale}", за "{result.price}"')
 
 
-    print(f'{c} | {v}')
-    print(f'{c} |')
-else:
-    for c in session.query(Publisher).filter(Publisher.name.like(f'%{publ_name}%')).all():
-        print()
+def searching_publisher_id():
+    query_join1 = session.query(Sale).join(Stock).join(Book).join(Publisher)
+    query_join = session.query(Shop).join(Stock).join(Book).join(Publisher)
+    query_publisher_name = input('Введите имя (name) издателя: ')
+    query_result = query_join.filter(Publisher.id == query_publisher_name)
+    query_result1 = query_join1.filter(Publisher.id == query_publisher_name)
+    for result in query_result.all():
+        print(f'Издатель "{query_publisher_name}" найден в магазине "{result.name}" с идентификатором {result.id}')
+        for result in query_result1.all():
+            print(f'Книга была куплена "{result.date_sale}", за "{result.price}"')
+
+
+if __name__ == '__main__':
+    searching_publisher_name()
+    searching_publisher_id()
+
+
+
 
 session.close()
 
