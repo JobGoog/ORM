@@ -1,5 +1,5 @@
 [
-    {"model": "publisher", "pk": 1, "fields": {"name": "O\u2019Reilly"}},
+    {"model": "publisher", "pk": 1, "fields": {"name": "OReilly"}},
     {"model": "publisher", "pk": 2, "fields": {"name": "Pearson"}},
     {"model": "publisher", "pk": 3, "fields": {"name": "Microsoft Press"}},
     {"model": "publisher", "pk": 4, "fields": {"name": "No starch press"}},

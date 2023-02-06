@@ -35,8 +35,8 @@ def searching_publisher_name():
     query_result1 = query_join1.filter(Publisher.name == query_publisher_name)
     for result in query_result.all():
         print(f'Издатель "{query_publisher_name}" найден в магазине "{result.name}" с идентификатором {result.id}')
-        for result in query_result1.all():
-            print(f'Книга была куплена "{result.date_sale}", за "{result.price}"')
+    for result in query_result1.all():
+        print(f'Книга была куплена "{result.date_sale}", за "{result.price}"')
 
 
 def searching_publisher_id():
@@ -47,8 +47,8 @@ def searching_publisher_id():
     query_result1 = query_join1.filter(Publisher.id == query_publisher_name)
     for result in query_result.all():
         print(f'Издатель "{query_publisher_name}" найден в магазине "{result.name}" с идентификатором {result.id}')
-        for result in query_result1.all():
-            print(f'Книга была куплена "{result.date_sale}", за "{result.price}"')
+    for result in query_result1.all():
+        print(f'Книга была куплена "{result.date_sale}", за "{result.price}"')
 
 
 if __name__ == '__main__':
